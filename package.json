@@ -1,0 +1,24 @@
+{
+  "name": "trust-agent",
+  "version": "0.1.0",
+  "description": "Secure coding agent — frontier cloud LLM drives tasks, local models guard secret files. Source code never leaves your machine.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microarch-flow/trust-agent.git"
+  },
+  "homepage": "https://github.com/microarch-flow/trust-agent#readme",
+  "bugs": {
+    "url": "https://github.com/microarch-flow/trust-agent/issues"
+  },
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "build": "tsc --build",
+    "test": "bun test",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/picomatch": "^4.0.2"
+  }
+}

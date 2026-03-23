@@ -1,0 +1,17 @@
+{
+  "name": "@trust-proxy/core",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "ai": "^4",
+    "js-yaml": "^4.1.0",
+    "picomatch": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "bun-types": "latest",
+    "typescript": "^5.7.0"
+  }
+}

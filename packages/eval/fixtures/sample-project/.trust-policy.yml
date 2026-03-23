@@ -1,0 +1,16 @@
+default: public
+
+secret:
+  - src/core/**
+
+derived: []
+
+ignore:
+  - "**/*.test.*"
+
+settings:
+  default_projection_level: 1
+  max_projection_level: 3
+  info_budget_ceiling: 4096
+  ask_limit: 20
+  known_safe_tokens: []

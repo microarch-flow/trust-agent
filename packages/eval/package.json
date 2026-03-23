@@ -1,0 +1,12 @@
+{
+  "name": "@trust-proxy/eval",
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "@trust-proxy/core": "workspace:*"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,29 @@
+# Trust Agent example: Python project
+
+version: "1"
+
+assets:
+  default: public
+  rules:
+    - pattern: "src/core/**"
+      level: secret
+  ignore:
+    - "**/*_test.py"
+    - "**/__pycache__/**"
+
+models:
+  driver:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    apiKey: ${ANTHROPIC_API_KEY}
+
+security:
+  projection:
+    default_level: 1
+    max_level: 3
+    budget:
+      tokens_per_file: 4096
+      ask_limit: 20
+
+session:
+  max_iterations: 50

@@ -1,0 +1,27 @@
+# Internal planning docs (not for public repo)
+doc/product-design.md
+doc/product-gaps.md
+doc/sprint7-todo.md
+doc/next-phase-todo.md
+tests/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Dependencies
+node_modules/
+
+# Runtime / local state
+.trust-proxy/
+.trust-cache/
+
+# Secrets
+.env
+.env.*
+*.enc
+ANTHROPIC_API_KEY
+
+# OS
+.DS_Store
+Thumbs.db

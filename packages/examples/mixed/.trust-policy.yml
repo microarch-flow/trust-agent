@@ -1,0 +1,52 @@
+# Trust Agent example: mixed-language project (TypeScript + Python + Go)
+# Uses hybrid mode: cloud driver + local projector
+
+version: "1"
+
+assets:
+  default: public
+  rules:
+    - pattern: "src/core/**"
+      level: secret
+  ignore:
+    - "**/*.test.*"
+    - "**/*_test.*"
+    - "node_modules/**"
+    - "**/__pycache__/**"
+
+providers:
+  cloud:
+    api: anthropic
+    apiKey: ${ANTHROPIC_API_KEY}
+  local:
+    api: openai-compatible
+    baseURL: http://localhost:11434/v1
+
+models:
+  driver:
+    provider: cloud
+    model: claude-sonnet-4-20250514
+  projector:
+    provider: local
+    model: llama3.2
+  answerer:
+    provider: local
+    model: llama3.2
+
+security:
+  projection:
+    default_level: 2
+    max_level: 3
+    budget:
+      tokens_per_file: 8192
+      ask_limit: 30
+  guard:
+    canary:
+      auto_plant: false
+
+tools:
+  bash:
+    policy: workspace_isolated
+
+session:
+  max_iterations: 80
