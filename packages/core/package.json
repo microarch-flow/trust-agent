@@ -2,8 +2,19 @@
   "name": "@trust-proxy/core",
   "version": "0.1.0",
   "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "tsup"
+  },
   "dependencies": {
     "ai": "^4",
     "js-yaml": "^4.1.0",
@@ -11,7 +22,9 @@
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
+    "@types/picomatch": "^4.0.2",
     "bun-types": "latest",
+    "tsup": "^8",
     "typescript": "^5.7.0"
   }
 }
