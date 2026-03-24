@@ -6,18 +6,33 @@ Get your first secure coding session running in under 15 minutes.
 
 ## Prerequisites
 
-- [Bun](https://bun.sh) ≥ 1.0  (`curl -fsSL https://bun.sh/install | bash`)
 - An Anthropic API key (or OpenAI-compatible endpoint)
+- A package manager — pick one:
+  - **[pnpm](https://pnpm.io) ≥ 8** (recommended for most users, requires Node.js ≥ 18)
+  - **[Bun](https://bun.sh) ≥ 1.0** (recommended for contributors / faster dev loop)
 
 ---
 
 ## 1. Clone and install
 
+**Option A — pnpm (standard Node.js environment):**
+
+```bash
+git clone https://github.com/your-org/trust-agent
+cd trust-agent
+pnpm install
+pnpm build                    # compiles TypeScript → dist/
+cd packages/cli && pnpm link --global   # makes `trust-agent` available globally
+```
+
+**Option B — Bun (developers / contributors):**
+
 ```bash
 git clone https://github.com/your-org/trust-agent
 cd trust-agent
 bun install
-bun run build          # compiles all packages
+# No build step needed — Bun runs TypeScript source directly
+# Run CLI with: bun run packages/cli/src/index.ts <command>
 ```
 
 ---

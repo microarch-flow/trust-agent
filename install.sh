@@ -68,3 +68,7 @@ esac
 echo "Get started:"
 echo "  trust-agent init"
 echo "  trust-agent run \"Analyze project structure\""
+echo ""
+echo "To build from source instead:"
+echo "  pnpm install && pnpm build   # Node.js / pnpm users"
+echo "  bun install                  # Bun users (no build needed)"

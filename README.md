@@ -149,16 +149,34 @@ Orchestrator
 
 ### 前置条件
 
-- [Bun](https://bun.sh) >= 1.0
 - 云端 LLM API key（Anthropic 或 OpenAI）
 - 本地模型服务（可选，处理 secret 文件）：任何 OpenAI-compatible API
+- 包管理器：[pnpm](https://pnpm.io) >= 8（推荐，标准 Node.js 环境）或 [Bun](https://bun.sh) >= 1.0（开发者）
 
 ### 安装
+
+**使用 pnpm（推荐，标准 Node.js 用户）：**
+
+```bash
+git clone https://github.com/microarch-flow/trust-agent.git
+cd trust-agent
+pnpm install
+pnpm build           # 编译所有包，产物在 packages/cli/dist/
+```
+
+构建完成后，将 `trust-agent` 命令链接到全局：
+
+```bash
+cd packages/cli && pnpm link --global
+```
+
+**使用 Bun（开发者 / 贡献者）：**
 
 ```bash
 git clone https://github.com/microarch-flow/trust-agent.git
 cd trust-agent
 bun install
+# 无需构建，bun 直接运行 TypeScript 源码
 ```
 
 ### 初始化项目
@@ -278,16 +296,26 @@ trust-agent status <session-id>
 
 ---
 
-## 构建可执行文件
+## 构建
+
+### pnpm — JS bundle（Node.js 可执行）
+
+```bash
+pnpm build
+```
+
+产物位于 `packages/cli/dist/index.js`，需要 Node.js >= 18 运行。
+
+### Bun — 原生独立二进制（跨平台分发）
 
 ```bash
 cd packages/cli
 
 # 构建当前平台二进制
-bun run build
+bun run build:bin
 
 # 交叉编译所有平台（linux/darwin × x64/arm64）
-bun run build:all
+bun run build:bin:all
 ```
 
 产物位于 `packages/cli/dist/`：
@@ -323,13 +351,24 @@ bun test packages/eval/src/guard-layers.test.ts
 - `phase3.test.ts` — 12 个：双 workspace 隔离、PROXY_WRITE 流程、Canary
 - `guard-layers.test.ts` — 13 个：三层 Guard（结构指纹、Meta-Guard、兼容性）
 
-### 本地运行 CLI（无需构建）
+### 本地运行 CLI
+
+**Bun（无需构建，直接跑源码）：**
 
 ```bash
 bun run packages/cli/src/index.ts help
 bun run packages/cli/src/index.ts init /your/project
 bun run packages/cli/src/index.ts validate /your/project
 bun run packages/cli/src/index.ts run "你的任务"
+```
+
+**pnpm（先构建再运行）：**
+
+```bash
+pnpm build
+node packages/cli/dist/index.js help
+node packages/cli/dist/index.js run "你的任务"
+# 或 pnpm link --global 后直接用 trust-agent 命令
 ```
 
 ### 包结构
