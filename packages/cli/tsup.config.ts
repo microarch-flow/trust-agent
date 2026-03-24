@@ -17,7 +17,7 @@ export default defineConfig({
     // 构建后这些文件必须存在于 dist/prompts/ 下
     // 使用直接的 monorepo 相对路径，避免依赖 pnpm/bun node_modules 结构
     cpSync(
-      new URL("../../core/src/orchestrator/prompts", import.meta.url),
+      new URL("../core/src/orchestrator/prompts", import.meta.url),
       new URL("./dist/prompts", import.meta.url),
       { recursive: true }
     )

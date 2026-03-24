@@ -5,9 +5,10 @@ export default defineConfig({
   format: ["esm"],
   target: "node18",
   dts: {
-    // 覆盖 tsconfig 中的 bun-types，避免 dts pass 引入 bun 全局类型
+    // 使用 node types 替代 bun-types，避免 dts pass 引入 bun 全局类型
     compilerOptions: {
-      types: [],
+      types: ["node"],
+      composite: false,
     },
   },
   clean: true,

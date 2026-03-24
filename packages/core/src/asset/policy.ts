@@ -109,6 +109,7 @@ type RawTrustConfig = {
   session?: {
     max_iterations?: number
     workspace?: { enabled?: boolean; mode?: "symlink" | "copy" }
+    atomic_writes?: boolean
   }
   audit?: {
     enabled?: boolean
